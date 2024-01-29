@@ -12,4 +12,13 @@ public class SimpleTask extends Task {
     public String getTitle() {
         return title;
     }
+
+    // SimpleTask подходит, если запрос query встречается в title
+    @Override
+    public boolean matches(String query) {
+        if (title.contains(query)) {
+            return true;
+        }
+        return false;
+    }
 }

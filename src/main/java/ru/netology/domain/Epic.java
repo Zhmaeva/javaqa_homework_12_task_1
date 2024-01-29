@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 // задача, состоящая из подзадач
 public class Epic extends Task {
-    private String[] subtasks;
+    protected String[] subtasks;
 
     public Epic(int id, String[] subtasks) {
         super(id);
@@ -11,5 +11,16 @@ public class Epic extends Task {
 
     public String[] getSubtasks() {
         return subtasks;
+    }
+
+    // Epic подходит, если запрос query встречается хотя бы в одной из подзадач
+    @Override
+    public boolean matches(String query) {
+        for (String subtask : subtasks) {
+            if (subtask.contains(query)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

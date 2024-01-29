@@ -149,14 +149,14 @@ public void shouldAddThreeTasksOfDifferentType() {
 
 ````java
     /**
-     * Метод, проверяющий подходит ли эта задача поисковому запросу.
-     * Эта логика должна быть определена в наследниках, у каждого она будет своя
-     * @param query Поисковый запрос
-     * @return Ответ на вопрос, подходит ли эта задача под поисковый запрос
-     */
-    public boolean matches(String query) {
-        return false;
-    }
+ * Метод, проверяющий подходит ли эта задача поисковому запросу.
+ * Эта логика должна быть определена в наследниках, у каждого она будет своя
+ * @param query Поисковый запрос
+ * @return Ответ на вопрос, подходит ли эта задача под поисковый запрос
+ */
+public boolean matches(String query) {
+    return false;
+}
 ````
 
 В каждом же наследнике мы переопределим этот метод так, чтобы:
@@ -171,16 +171,17 @@ public void shouldAddThreeTasksOfDifferentType() {
 В итоге мы может переопределить метод так:
 
 ````java
-    @Override
-    public boolean matches(String query) {
-        if (topic.contains(query)) {
-            return true;
-        }
-        if (project.contains(query)) {
-            return true;
-        }
-        return false;
+
+@Override
+public boolean matches(String query) {
+    if (topic.contains(query)) {
+        return true;
     }
+    if (project.contains(query)) {
+        return true;
+    }
+    return false;
+}
 ````
 
 Переопределите метод `matches` для двух оставшихся классов.  

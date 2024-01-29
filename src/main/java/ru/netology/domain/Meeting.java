@@ -2,9 +2,9 @@ package ru.netology.domain;
 
 // задача, описывающая назначенную встречу
 public class Meeting extends Task {
-    private String topic;
-    private String project;
-    private String start;
+    protected String topic;
+    protected String project;
+    protected String start;
 
     public Meeting(int id, String topic, String project, String start) {
         super(id);
@@ -24,4 +24,18 @@ public class Meeting extends Task {
     public String getStart() {
         return start;
     }
+
+    // Meeting подходит, если запрос query встречается в topic или project
+    @Override
+    public boolean matches(String query) {
+        if (topic.contains(query)) {
+            return true;
+        }
+        if (project.contains(query)) {
+            return true;
+        }
+        return false;
+    }
+
+
 }
